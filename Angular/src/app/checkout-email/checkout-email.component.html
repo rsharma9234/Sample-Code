@@ -1,0 +1,32 @@
+<div class="checkout-email-page">
+    <div class="content">
+        <!-- <h1 class="app-name">Ameniti</h1> -->
+        <form class="checkout-email-form" [formGroup]="checkoutEmailForm" novalidate (keyup.enter)="onSentEmail()">
+            <div class="text-center">
+                <!-- <h2 class="app-name">Ameniti</h2> -->
+                <img class="app-name" src="/assets/images/logo.png" />
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column" class="mt-1">
+                <div fxFlexFill>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Email" formControlName="email" type="email">
+                    </mat-form-field>
+                    <span class="danger-text" *ngIf="checkoutEmailForm.controls.email.touched && checkoutEmailForm.controls.email.errors?.required">{{validationMessages.email?.required}}
+                        <br>
+                    </span>
+                    <span class="danger-text" *ngIf="checkoutEmailForm.controls.email.touched && checkoutEmailForm.controls.email.errors?.email">{{validationMessages.email?.email}}</span>
+                </div>
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+                <div fxFlexFill>
+                    <button mat-raised-button color="primary" class="w-100" (click)="onSentEmail()">Send Checkout Email</button>
+                </div>
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column" style="margin: 20px 0 30px 0">
+                <div fxFlex fxLayoutAlign="end">
+                    <a [routerLink]="['/login']">Go to Home</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

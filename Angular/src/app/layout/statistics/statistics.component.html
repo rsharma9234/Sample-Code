@@ -1,0 +1,67 @@
+<div fxFlex fxLayout="row" fxLayout.lt-md="column">
+    <div fxFlex>
+        <mat-form-field class="chart-filter-input">
+            <mat-select placeholder="Select an option" (selectionChange)="selectFilterOption($event.value)" [value]="filterOptions[0].value">
+                <mat-option *ngFor="let filterOption of filterOptions" [value]="filterOption.value">
+                    {{ filterOption.label }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <form *ngIf="customPeriod == true" [formGroup]="dateRangeForm" novalidate (keyup.enter)="filterByCustomDates()">
+
+            <mat-form-field class="chart-filter-input">
+                <input matInput id="startDatePicker" [min]="mindate" [max]="dateRangeForm.controls.endDate.value ? dateRangeForm.controls.endDate.value : maxDate" [matDatepicker]="startDatePicker"
+                    type="text" formControlName="startDate" [placeholder]="'Start Date'">
+                <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDatePicker></mat-datepicker>
+                <!-- <span class="danger-text font-14" *ngIf="dateRangeForm.controls.startDate.touched && dateRangeForm.controls.startDate.invalid || formSubmitted && dateRangeForm.controls.startDate?.invalid">{{validationMessages.startDate.required}}</span> -->
+            </mat-form-field>
+
+            <mat-form-field class="chart-filter-input">
+                <input matInput id="endDatePicker" [min]="dateRangeForm.controls.startDate.value" [max]="maxDate" [matDatepicker]="endDatePicker"
+                    type="text" formControlName="endDate" [placeholder]="'End Date'">
+                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #endDatePicker></mat-datepicker>
+                <!-- <span class="danger-text mb-1 font-14" *ngIf="dateRangeForm.controls.endDate.touched && dateRangeForm.controls.endDate.invalid || formSubmitted && dateRangeForm.controls.endDate?.invalid">{{validationMessages.endDate.required}}</span> -->
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" (click)="filterByCustomDates()" [disabled]="loading" class="w-100"><span class="font-16">Submit</span></button>
+        </form>
+    </div>
+</div>
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px" *ngIf="lineChartData.length != 0">
+    <app-charts fxFlex [title]="'Checkouts (Value)'" [lineChartData]="lineChartData" [lineChartLabels]="lineChartLabels" [lineChartColors]="lineChartColors"></app-charts>
+    <app-charts fxFlex [title]="'Checkouts (Percentage)'" [lineChartData]="lineChartPercentData" [lineChartLabels]="lineChartLabels"
+        [lineChartColors]="lineChartColors"></app-charts>
+</div>
+
+<div class="mb-20" *ngIf="weeklyCheckoutTable.length != 0">
+    <table>
+        <tbody>
+            <tr>
+                <td></td>
+                <td *ngFor="let label of weeklyCheckoutTable['dateLabels']">{{ label }}</td>
+            </tr>
+            <tr>
+                <td>Sent</td>
+                <td *ngFor="let label of weeklyCheckoutTable['sentOnly']">{{ label }}</td>
+            </tr>
+            <tr>
+                <td>Delivered</td>
+                <td *ngFor="let label of weeklyCheckoutTable['emailSent']">{{ label }}</td>
+            </tr>
+            <tr>
+                <td>Checkouts</td>
+                <td *ngFor="let label of weeklyCheckoutTable['checkout']">{{ label }}</td>
+            </tr>
+            <tr>
+                <td>Percentage</td>
+                <td *ngFor="let label of weeklyCheckoutTable['percentage']">{{ label.toFixed(2) }}%</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div style="text-align: center;" class="mb-20" *ngIf="lineChartData.length == 0">
+    <img src="/assets/images/loading.gif" />
+</div>

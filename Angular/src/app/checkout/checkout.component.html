@@ -1,0 +1,22 @@
+<div class="checkout-page">
+  <div class="content">
+    <!-- <h1 class="app-name">Ameniti</h1> -->
+
+    <div class="checkout-form text-center">
+      <div class="text-center">
+        <img class="app-name" src="/assets/images/logo.png" />
+      </div>
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill class="text-center" *ngIf="message!='success'">
+           <p>{{ message }}</p>
+        </div>
+
+        <div fxFlexFill class="text-center" *ngIf="message=='success'">
+            <h2 class="checkout-requested">Checkout requested</h2>
+            <p>Your account will be charged using the credit card preauthorized at check-in.</p>
+            <p>You will receive a complete copy of your invoice tomorrow.</p>
+         </div>
+    </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="register-page">
+    <div class="content">
+        <!-- <h1 class="app-name">Ameniti</h1> -->
+        <form class="register-form" [formGroup]="signupForm" novalidate (keyup.enter)="onRegister()">
+            <div class="text-center">
+                <!-- <h2 class="app-name">Ameniti</h2> -->
+                <img class="app-name" src="/assets/images/logo.png" />
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+                <div fxFlexFill>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="First Name" formControlName="first_name" type="text">
+                    </mat-form-field>
+                    <span class="danger-text" *ngIf="signupForm.controls.first_name.touched && signupForm.controls.first_name?.invalid">{{validationMessages.firstname.required}}</span>
+                </div>
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+                <div fxFlexFill>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Last Name" formControlName="last_name" type="text">
+                    </mat-form-field>
+                    <span class="danger-text" *ngIf="signupForm.controls.last_name.touched && signupForm.controls.last_name?.invalid">{{validationMessages.lastname.required}}</span>
+                </div>
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column" class="mt-1">
+                <div fxFlexFill>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Email" formControlName="email" type="email">
+                    </mat-form-field>
+                    <span class="danger-text" *ngIf="signupForm.controls.email.touched && signupForm.controls.email.errors?.required">{{validationMessages.email?.required}}
+                        <br>
+                      </span>
+                      <span class="danger-text" *ngIf="signupForm.controls.email.touched && signupForm.controls.email.errors?.email">{{validationMessages.email?.email}}</span>
+                      <span class="danger-text" *ngIf="emailExistMessage">{{validationMessages.email.exist}}</span>
+                </div>
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column" class="mt-1">
+                <div fxFlexFill>
+                    <mat-form-field class="w-100">
+                        <input matInput type="password" placeholder="Password" formControlName="password" type="password">
+                    </mat-form-field>
+                    <span class="danger-text" *ngIf="signupForm.controls.password.touched && signupForm.controls.password.errors?.required">{{validationMessages.password?.required}}</span>
+                </div>
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column" class="mt-1">
+                <div fxFlexFill>
+                    <mat-form-field class="w-100">
+                        <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPass" type="password">
+                    </mat-form-field>
+                    <span class="danger-text mb-1" *ngIf="signupForm.controls.confirmPass.touched && signupForm.controls.confirmPass.errors?.required">{{validationMessages.confirmpass.required}}
+                        <br>
+                      </span>
+                      <span class="danger-text mb-1" *ngIf="signupForm.controls.confirmPass.touched && signupForm.errors?.notSame && !signupForm.controls.confirmPass.errors?.required">{{validationMessages.confirmpass.notSame}}</span>
+                </div>
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+                <div fxFlexFill>
+                    <button mat-raised-button color="primary" class="w-100" (click)="onRegister()">Register</button>
+                </div>
+            </div>
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column" style="margin: 20px 0 30px 0">
+                <div fxFlex fxLayoutAlign="end">
+                    <a [routerLink]="['/login']">Already have an account?</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+td {
+    width: 12%;
+    padding: 0.5%;
+    border: 1px solid #858585;
+    text-align: center;
+}
+td:first-child {
+    text-align: left;
+}
