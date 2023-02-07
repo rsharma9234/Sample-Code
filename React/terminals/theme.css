@@ -1,0 +1,25 @@
+.terminals {
+  padding: 30px;
+  background: #fff;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.heading{
+  padding-bottom: 30px;
+  max-width: 680px;
+  margin: 0 auto;
+  color: #424242;
+}
+.terminals table th, .terminals table td{
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.clear{
+  clear: both;
+}

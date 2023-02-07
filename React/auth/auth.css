@@ -1,0 +1,34 @@
+.auth.page {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.auth-form.container {
+  width: 675px;
+  padding: 70px 120px;
+}
+
+.auth-form.container h1 {
+  margin: 0;
+  color: #bfbab5;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.login.form > * {
+  text-align: center;
+}
+
+.login.form .field {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.logo-container {
+  margin-bottom: 50px;
+  text-align: center;
+}

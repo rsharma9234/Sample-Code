@@ -1,0 +1,83 @@
+.calendar {
+  padding: 1.5em;
+  padding-top: .5em;
+  background-color: white;
+}
+
+.calendar-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendar-header-title {
+  flex-grow: 1;
+  margin: 0;
+  color: #333333;
+  font-size: 20px;
+}
+
+.calendar-header-actions {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.calendar-month-view {
+  width: 100%;
+  border-collapse: collapse;
+  border-color: #cccccc;
+}
+
+.calendar-month-view td,
+.calendar-month-view th {
+  width: 14.29%;
+  overflow: hidden;
+  border: solid thin;
+  border-color: inherit;
+}
+
+.calendar-month-view th {
+  padding: 2px 0;
+  background-color: #eeeeee;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.calendar-month-view td {
+  vertical-align: top;
+  height: 185px;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.calendar-month-view .date {
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.calendar-month-view .date.previous {
+  color: grey;
+}
+
+.calendar-month-view .in-card{
+  cursor: pointer;
+}
+
+.light-blue {
+  background-color: #E1F5FE;
+}
+
+.light-blue-900 {
+  background-color: #01579B;
+}
+
+.no-light-blue{
+  background-color: #ffffff;
+}
+
+@media print {
+  .calendar {
+    padding: 0;
+  }
+}
